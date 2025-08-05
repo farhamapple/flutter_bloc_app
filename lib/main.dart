@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_app/cubit_page.dart';
-import 'package:flutter_bloc_app/stream_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: const StreamPage(),
-      home: const CubitPage(),
+      home: CubitPage(),
     );
   }
 }
