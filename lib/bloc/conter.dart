@@ -10,12 +10,12 @@ class CounterCubit extends Cubit<int> {
   @override
   void onChange(Change<int> change) {
     super.onChange(change);
-    print('CounterCubit state changed: $change');
+    //print('CounterCubit state changed: $change');
   }
 
   @override
   void onError(Object error, StackTrace stackTrace) {
     super.onError(error, stackTrace);
-    print('CounterCubit error: $error');
+    // print('CounterCubit error: $error');
   }
 }

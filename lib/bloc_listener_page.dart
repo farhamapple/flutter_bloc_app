@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_app/bloc/conter.dart';
 
-// ignore: must_be_immutable
-class BlocBuilderPage extends StatelessWidget {
-  BlocBuilderPage({super.key});
+class BlocListenerPage extends StatelessWidget {
+  BlocListenerPage({super.key});
 
   final CounterCubit _counterCubit = CounterCubit();
 
@@ -13,7 +12,7 @@ class BlocBuilderPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Bloc Builder Page',
+          'Bloc Listener Page',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -22,19 +21,14 @@ class BlocBuilderPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // StreamBuilder(
-          //   stream: _counterCubit.stream,
-          //   builder: (context, asyncSnapshot) {
-          //     return Text(
-          //       '${asyncSnapshot.data ?? 0}',
-          //       style: TextStyle(fontSize: 50),
-          //     );
-          //   },
-          // ),
-          BlocBuilder<CounterCubit, int>(
-            bloc: _counterCubit,
-            buildWhen: (previous, current) {
-              if (current % 2 == 0) {
+          BlocListener(
+            listener: (context, state) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('Dijalankan')));
+            },
+            listenWhen: (previous, current) {
+              if (current == 15) {
                 //print('Counter is a multiple of 5: $current');
                 return true;
               } else {
@@ -42,8 +36,12 @@ class BlocBuilderPage extends StatelessWidget {
                 return false;
               }
             },
-            builder: (context, state) =>
-                Text('$state', style: TextStyle(fontSize: 50)),
+            bloc: _counterCubit,
+            child: BlocBuilder<CounterCubit, int>(
+              bloc: _counterCubit,
+              builder: (context, state) =>
+                  Text('$state', style: TextStyle(fontSize: 50)),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
