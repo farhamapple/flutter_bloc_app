@@ -1,5 +1,8 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_app/bloc_builder_page.dart';
 import 'package:flutter_bloc_app/cubit_page.dart';
+import 'package:flutter_bloc_app/observer_cubit_page.dart';
 import 'package:flutter_bloc_app/stream_page.dart';
 
 void main() {
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomePage(), // Set HomePage as the home widget
+      home: BlocBuilderPage(), // Set HomePage as the home widget
     );
   }
 }
@@ -34,30 +37,49 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CubitPage()),
-                );
-              },
-              child: const Text('Cubit Page'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => StreamPage()),
-                );
-              },
-              child: const Text('Stream Page'),
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CubitPage()),
+                  );
+                },
+                child: const Text('Cubit Page'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => StreamPage()),
+                  );
+                },
+                child: const Text('Stream Page'),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ObserverCubitPage(),
+                    ),
+                  );
+                },
+                child: const Text('Observer Cubit Page'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
