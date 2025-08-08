@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_app/bloc_builder_page.dart';
+import 'package:flutter_bloc_app/bloc_consumer_page.dart';
 import 'package:flutter_bloc_app/bloc_listener_page.dart';
 import 'package:flutter_bloc_app/cubit_page.dart';
 import 'package:flutter_bloc_app/observer_cubit_page.dart';
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BlocListenerPage(), // Set HomePage as the home widget
+      home: BlocConsumerPage(), // Set HomePage as the home widget
     );
   }
 }
