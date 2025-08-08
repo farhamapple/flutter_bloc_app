@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_app/bloc/product_bloc.dart';
+import 'package:flutter_bloc_app/bloc/text_bloc.dart';
 import 'package:flutter_bloc_app/bloc_provider_page.dart';
+import 'package:flutter_bloc_app/bloc_provider_text_page.dart';
 import 'package:flutter_bloc_app/cubit_page.dart';
 import 'package:flutter_bloc_app/observer_cubit_page.dart' hide CounterCubit;
+import 'package:flutter_bloc_app/shop_app_page.dart';
 import 'package:flutter_bloc_app/stream_page.dart';
 
 void main() {
-  runApp(
-    BlocProvider(
-      create: (_) => CounterCubit(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
-        home: BlocProviderPage(),
-      ),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,13 +18,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return BlocProvider(
+      create: (context) => ProductBloc()..add(OnProductEventCalled()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: ShopAppPage(), // Set HomePage as the home widget
       ),
-      home: BlocProviderPage(), // Set HomePage as the home widget
     );
   }
 }

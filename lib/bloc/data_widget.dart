@@ -6,6 +6,6 @@ class DataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: CenterWidget());
+    return Container(height: 100, width: 100, child: CenterWidget());
   }
 }

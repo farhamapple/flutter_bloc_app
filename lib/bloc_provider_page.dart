@@ -9,7 +9,7 @@ class BlocProviderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CounterCubit counterCubit = BlocProvider.of<CounterCubit>(context);
+    //CounterCubit counterCubit = BlocProvider.of<CounterCubit>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -22,19 +22,19 @@ class BlocProviderPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          DataWidget(),
+          Center(child: Text('ss', style: const TextStyle(fontSize: 50))),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
                 onPressed: () {
-                  counterCubit.decrement();
+                  //counterCubit.decrement();
                 },
                 icon: const Icon(Icons.remove, size: 50, color: Colors.red),
               ),
               IconButton(
                 onPressed: () {
-                  counterCubit.increment();
+                  //counterCubit.increment();
                 },
                 icon: const Icon(Icons.add, size: 50, color: Colors.green),
               ),
