@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_app/bloc_consumer_page.dart';
-import 'package:flutter_bloc_app/bloc_listener_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_app/bloc_provider_page.dart';
 import 'package:flutter_bloc_app/cubit_page.dart';
-import 'package:flutter_bloc_app/observer_cubit_page.dart';
+import 'package:flutter_bloc_app/observer_cubit_page.dart' hide CounterCubit;
 import 'package:flutter_bloc_app/stream_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (_) => CounterCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: BlocProviderPage(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,12 +32,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BlocConsumerPage(), // Set HomePage as the home widget
+      home: BlocProviderPage(), // Set HomePage as the home widget
     );
   }
 }
 
 // Create a separate HomePage widget
+/*
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -84,3 +97,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+*/

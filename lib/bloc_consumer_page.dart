@@ -39,10 +39,10 @@ class BlocConsumerPage extends StatelessWidget {
             },
             listenWhen: (previous, current) {
               if (current % 2 == 0) {
-                print('Counter is a multiple of 5: $current');
+                //rint('Counter is a multiple of 5: $current');
                 return true;
               } else {
-                print('Counter is not a multiple of 5: $current');
+                // print('Counter is not a multiple of 5: $current');
                 return false;
               }
             },
